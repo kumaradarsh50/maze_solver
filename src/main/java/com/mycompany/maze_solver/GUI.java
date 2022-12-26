@@ -16,25 +16,24 @@ import javax.swing.JFrame;
  */
 public class GUI extends JFrame {
 
-    int[][] maze = {
+    private int[][] maze = {
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-        {1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1},
-        {1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0},
-        {1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 9, 1},
-        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},};
+        {1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1},
+        {1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1},
+        {1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1},
+        {1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1},
+        {1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1},
+        {1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1},
+        {1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 1},
+        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    };
     public List<Integer> path = new ArrayList<>();
 
     public GUI() {
         setTitle("Maze Solver");
         setSize(640, 480);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         DepthFirst.searchpath(maze, 1, 1, path);
         System.out.println(path);
@@ -43,8 +42,8 @@ public class GUI extends JFrame {
 
     @Override
     public void paint(Graphics g) {
-        g.translate(50, 50);
         super.paint(g);
+        g.translate(50, 50);
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[0].length; j++) {
                 Color color;
